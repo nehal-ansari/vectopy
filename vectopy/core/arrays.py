@@ -1,4 +1,4 @@
-from _internals import ShapeError, DtypeError, _check_same_shape
+from ._internals import ShapeError, DtypeError, _check_same_shape
 
 class VectoPyArray:
   """The core 1-dimensional array object."""
@@ -50,7 +50,7 @@ class VectoPyArray:
       result_data = [op(x, other) for x in self._data]
       # Determine appropriate dtype for result
       result_dtype = float if(isinstance(other, float) or self._dtype is float) else self._dtype
-      return VectoPyArray(self.shape, dtype=self._dtype, buffer=result_data)
+      return VectoPyArray(self.shape, dtype=result_dtype, buffer=result_data)
     elif isinstance(other, VectoPyArray):
       _check_same_shape(self, other)
       result_data = [op(x, y) for x, y in zip(self._data, other.data)]
