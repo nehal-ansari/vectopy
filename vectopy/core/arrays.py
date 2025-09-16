@@ -72,3 +72,7 @@ class VectoPyArray:
   def __truediv__(self, other):
     return self._element_wise_operation(other, lambda x, y: x / y)
   
+  def dot(self, other):
+    """Dot product of two arrays."""
+    _check_same_shape(self, other)
+    return sum(x * y for x, y in zip(self._data, other.data))

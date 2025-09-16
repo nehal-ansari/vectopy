@@ -1,3 +1,7 @@
+"""
+Factory functions for creating arrays.
+"""
+
 from .arrays import VectoPyArray
 
 def array(obj, dtype=None):
