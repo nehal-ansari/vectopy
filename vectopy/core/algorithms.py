@@ -3,7 +3,6 @@ Algorithm implementations for VectoPyArray.
 """
 
 from .arrays import VectoPyArray
-from collections import Counter
 
 def majority_element(self):
     """Find majority element using Boyer-Moore algorithm."""
@@ -43,22 +42,9 @@ def is_monotonic(self):
     
     return increasing or decreasing
 
-def mode(self):
-    """Find the most frequent element(s)."""
-    if not self._data:
-        raise ValueError("Cannot find mode of empty array.")
-    
-    counter = Counter(self._data)
-    max_count = max(counter.values())
-    modes = [item for item, count in counter.items() if count == max_count]
-    
-    if len(modes) == 1:
-        return modes[0]
-    else:
-        return modes
+
 
 # Attach methods to VectoPyArray
 VectoPyArray.majority_element = majority_element
 VectoPyArray.unique = unique
 VectoPyArray.is_monotonic = is_monotonic
-VectoPyArray.mode = mode

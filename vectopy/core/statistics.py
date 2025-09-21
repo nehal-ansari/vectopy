@@ -3,9 +3,10 @@ Statistical operations for VectoPyArray.
 """
 
 from .arrays import VectoPyArray
+from collections import Counter
 import math
+import builtins
 
-# mode
 
 def sum(self):
     """Sum of array elements."""
@@ -16,11 +17,19 @@ def sum(self):
 
 def max(self):
     """Maximum value of the array."""
-    return max(self._data)
+    mx = self._data[0]  
+    for item in self._data:
+        if item > mx:
+            mx = item 
+    return mx
 
 def min(self):
     """Minimum value of the array."""
-    return min(self._data)
+    mn = self._data[0]  
+    for item in self._data:
+        if item < mn:
+            mn = item 
+    return mn
 
 def mean(self):
     """Mean of the array elements."""
@@ -29,7 +38,11 @@ def mean(self):
 def std(self):
     """Standard deviation of the array elements."""
     m = self.mean()
-    variance = sum((x - m) ** 2 for x in self._data) / len(self._data)
+    mean_sqr = ((x - m) ** 2 for x in self._data)
+    sm = 0
+    for val in mean_sqr:
+        sm += val
+    variance = sm / len(self._data)
     return math.sqrt(variance)
 
 def median(self):
@@ -43,6 +56,20 @@ def median(self):
     else:
         return (sorted_data[n // 2 - 1] + sorted_data[n // 2]) / 2
     
+def mode(self):
+    """Find the most frequent element(s)."""
+    if not self._data:
+        raise ValueError("Cannot find mode of empty array.")
+    
+    counter = Counter(self._data)
+    max_count = builtins.max(counter.values())
+    modes = [item for item, count in counter.items() if count == max_count]
+    
+    if len(modes) == 1:
+        return modes[0]
+    else:
+        return modes
+    
 # Attach methods to VectoPyArray
 VectoPyArray.sum = sum
 VectoPyArray.max = max
@@ -50,3 +77,4 @@ VectoPyArray.min = min
 VectoPyArray.mean = mean
 VectoPyArray.std = std
 VectoPyArray.median = median
+VectoPyArray.mode = mode

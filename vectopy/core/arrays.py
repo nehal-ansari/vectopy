@@ -36,7 +36,7 @@ class VectoPyArray:
   def __getitem__(self, index):
     if isinstance(index, slice):
       # Return a new VectoPyArray for slices
-      return VectoPyArray((len(self._data[index]),), self._data, buffer=self._data[index])
+      return VectoPyArray((len(self._data[index]),), self._dtype, buffer=self._data[index])
     return self._data[index]
   
   def __eq__(self, other):
@@ -70,8 +70,9 @@ class VectoPyArray:
     return self._element_wise_operation(other, lambda x, y: x * y)
   
   def __truediv__(self, other):
-    return self._element_wise_operation(other, lambda x, y: x / y)
-  
+    result = self._element_wise_operation(other, lambda x, y: x / y)
+    return VectoPyArray(self.shape, dtype=float, buffer=result.data)
+
   def dot(self, other):
     """Dot product of two arrays."""
     _check_same_shape(self, other)

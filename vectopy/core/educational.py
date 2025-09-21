@@ -15,38 +15,5 @@ def explain(self):
     print(f"  • Underlying Data: {self._data}")
     print(f"  • Memory Size: {self._size * itemsize} bytes (simulated)")
 
-def visualize(self):
-    """Simple ASCII visualization of the array."""
-    if not self._data:
-        print("Empty array")
-        return
-    
-    max_val = max(self._data)
-    min_val = min(self._data)
-    range_val = max_val - min_val
-    
-    if range_val == 0:
-        # All values are the same
-        for _ in self._data:
-            print("█", end="")
-        print()
-    else:
-        # Scale values to 0-10 range for visualization
-        for value in self._data:
-            scaled = int(((value - min_val) / range_val) * 10)
-            bar = "█" * (scaled + 1)
-            print(f"{bar:<10} ({value})")
-
-def benchmark(self, operation, *args):
-    """Time an operation for educational purposes."""
-    import time
-    start = time.time()
-    result = operation(self, *args)
-    end = time.time()
-    print(f"Operation {operation.__name__} took {end - start:.6f} seconds")
-    return result
-
 # Attach methods to NDArray1D
 VectoPyArray.explain = explain
-VectoPyArray.visualize = visualize
-VectoPyArray.benchmark = benchmark

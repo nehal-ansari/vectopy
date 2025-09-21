@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vectopy"
+version = "0.1.0"
+description = "A pure Python, educational implementation of a NumPy-like library for 1D vectors."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT License"}
+authors = [
+    {name = "Nehal Ansari", email = "nehalansari3112@gmail.com"},
+]
