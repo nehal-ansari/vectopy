@@ -51,7 +51,7 @@ source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 
 # Install vectopy directly from GitHub
-pip install git+https://github.com/nehalAnsari2000/vectopy.git
+pip install git+https://github.com/nehal-ansari/vectopy.git
 
 # Verify installation:
 python -c "import vectopy; print('vectopy imported successfully!')"
@@ -60,7 +60,7 @@ python -c "import vectopy; print('vectopy imported successfully!')"
 ### Method 2: Clone and Install Locally
 ```bash
 # Clone the repository
-git clone https://github.com/nehalAnsari2000/vectopy.git
+git clone https://github.com/nehal-ansari/vectopy.git
 cd vectopy
 
 # Create and activate virtual environment
@@ -181,7 +181,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 If you have questions, issues, or want to discuss library implementation:
 
-- 📋 Open an issue on [GitHub Issues](https://github.com/nehalAnsari2000/vectopy/issues)
+- 📋 Open an issue on [GitHub Issues](https://github.com/nehal-ansari/vectopy/issues)
 - 📧 Email me at: nehalansari3112@gmail.com
 - 💬 Use vectopy as a learning resource for your own educational projects
 
